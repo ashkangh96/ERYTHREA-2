@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erythra - اریترا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- فونت وزیر -->
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* هدر برنامه */
+        header {
+            background-color: #c00;
+            color: white;
+            padding: 25px 20px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 12px rgba(192, 0, 0, 0.3);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .app-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .app-title h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .persian-title {
+            font-family: 'Vazir', 'B Nazanin', 'Iranian Sans', Tahoma, sans-serif;
+        }
+        
+        .english-title {
+            font-family: 'Vazir', 'Segoe UI', Arial, sans-serif;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c00;
+            font-size: 2.5rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 3px solid white;
+        }
+        
+        /* آیکون ویژه اریترا */
+        .erythra-icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .erythra-icon::before {
+            content: "Ⓔ";
+            font-size: 3rem;
+            font-weight: bold;
+            color: #c00;
+            font-family: 'Vazir', Arial, sans-serif;
+        }
+        
+        /* دکمه تغییر زبان */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .lang-btn {
+            background-color: white;
+            color: #c00;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background-color: #ffeded;
+        }
+        
+        /* محتوای اصلی */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .legend-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #c00;
+        }
+        
+        .form-section {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #c00;
+        }
+        
+        h2 {
+            color: #c00;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            font-size: 1.6rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        .highlight {
+            background-color: #ffeaea;
+            padding: 15px;
+            border-right: 4px solid #c00;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: 600;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        /* فرم */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #c00;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .rating-item {
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .rating-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #666;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        .rating-circle:hover, .rating-circle.selected {
+            background-color: #c00;
+            color: white;
+        }
+        
+        .rating-text {
+            font-size: 0.8rem;
+            color: #666;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        .submit-btn {
+            background-color: #c00;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        .submit-btn:hover {
+            background-color: #a00;
+        }
+        
+        .submit-btn i {
+            margin-left: 8px;
+        }
+        
+        /* نظرات ثبت شده */
+        .comments-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #c00;
+            margin-top: 20px;
+        }
+        
+        .comment {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .comment-name {
+            font-weight: bold;
+            color: #c00;
+        }
+        
+        .comment-rating {
+            color: #ff9900;
+        }
+        
+        .comment-text {
+            line-height: 1.6;
+        }
+        
+        .no-comments {
+            text-align: center;
+            color: #888;
+            padding: 30px;
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            font-family: 'Vazir', Tahoma, sans-serif;
+        }
+        
+        /* حالت انگلیسی */
+        body.english {
+            direction: ltr;
+            text-align: left;
+        }
+        
+        body.english .language-switcher {
+            left: auto;
+            right: 20px;
+        }
+        
+        body.english .highlight {
+            border-right: none;
+            border-left: 4px solid #c00;
+        }
+        
+        body.english .submit-btn i {
+            margin-left: 0;
+            margin-right: 8px;
+        }
+        
+        body.english .comment-footer i {
+            margin-left: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .app-title h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .rating {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            
+            .language-switcher {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            
+            body.english .language-switcher {
+                right: 0;
+            }
+            
+            .header-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .erythra-icon::before {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button class="lang-btn" id="langToggle">
+            <i class="fas fa-language"></i> English
+        </button>
+    </div>
+    
+    <header>
+        <div class="app-title">
+            <div class="header-icon">
+                <div class="erythra-icon"></div>
+            </div>
+            <div>
+                <h1 class="persian-title">اریترا</h1>
+                <h1 class="english-title">Erythra</h1>
+            </div>
+        </div>
+        <div class="subtitle" id="pageSubtitle">اسطوره خلیج فارس</div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <section class="legend-section">
+                <h2 id="legendTitle"><i class="fas fa-book-open"></i> افسانه اریترا</h2>
+                <p id="legendText1">اسطوره اریترا یکی از اسطوره‌های کهن مرتبط با خلیج فارس است که نام آن برگرفته از نام یک شاهزاده یا سردار پارسی به نام اریتراس بوده است. این اسطوره روایت می‌کند که اریتراس پس از حمله شیرها به گله مادیانش به جزیره‌ هرمز پناه برد و آنجا را آباد کرد و مسلط بر آب‌های اطراف شد، به گونه‌ای که این دریا به نام او «اریترا» خوانده شد.</p>
+                
+                <div class="highlight" id="legendHighlight">
+                    <i class="fas fa-quote-right"></i> دریای اریترا کهن‌ترین نام برای پهنه آبی بین عمان و هندوستان است.
+                </div>
+                
+                <p id="legendText2">در متون تاریخی آمده است که مقبره این شاهزاده یا فرمانروا در جزیره هرمز وجود دارد و این اسطوره یادآور شخصیتی از خطه پارس و یکی از فرمانروایان مهم منطقه بوده که خلیج فارس را تحت سلطه داشته است.</p>
+                
+                <p id="legendText3">نام قدیم خلیج فارس پیش از این در دوران مادها و ایران باستان به صورت دریای اریترا شناخته می‌شده است و این کهن‌ترین نام برای این پهنه آبی بین عمان و هندوستان است که در مستندات تاریخی تأیید شده است. اریترا به نوعی یادآور تاریخی از حضور و تسلط ایرانیان بر این منطقه و میراث کهن فرهنگی آن است که طی قرون در لایه‌های متعددی از تاریخ و اسطوره‌ها ثبت شده است.</p>
+            </section>
+            
+            <section class="form-section">
+                <h2 id="formTitle"><i class="fas fa-comment-alt"></i> ثبت نظر درباره افسانه اریترا</h2>
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="name" id="nameLabel">نام شما:</label>
+                        <input type="text" id="name" placeholder="نام خود را وارد کنید" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" id="emailLabel">ایمیل (اختیاری):</label>
+                        <input type="email" id="email" placeholder="example@domain.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label id="commentLabel">نظر خود را درباره افسانه اریترا بیان کنید:</label>
+                        <textarea id="comment" placeholder="نظرات، تحلیل‌ها یا پیشنهادات خود را درباره افسانه اریترا بنویسید..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label id="familiarityLabel">آیا پیش از این با افسانه اریترا آشنا بودید؟</label>
+                        <select id="familiarity">
+                            <option value="yes">بله، کاملاً آشنا بودم</option>
+                            <option value="somewhat">تا حدودی شنیده بودم</option>
+                            <option value="no" selected>خیر، اولین بار است می‌شنوم</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label id="importanceLabel">اهمیت این افسانه در شناخت تاریخ خلیج فارس از نظر شما:</label>
+                        <div class="rating" id="importanceRating">
+                            <div class="rating-item" data-value="1">
+                                <div class="rating-circle">۱</div>
+                                <div class="rating-text" id="ratingText1">کم</div>
+                            </div>
+                            <div class="rating-item" data-value="2">
+                                <div class="rating-circle">۲</div>
+                                <div class="rating-text" id="ratingText2">متوسط</div>
+                            </div>
+                            <div class="rating-item" data-value="3">
+                                <div class="rating-circle">۳</div>
+                                <div class="rating-text" id="ratingText3">زیاد</div>
+                            </div>
+                            <div class="rating-item" data-value="4">
+                                <div class="rating-circle">۴</div>
+                                <div class="rating-text" id="ratingText4">خیلی زیاد</div>
+                            </div>
+                            <div class="rating-item" data-value="5">
+                                <div class="rating-circle">۵</div>
+                                <div class="rating-text" id="ratingText5">بسیار حیاتی</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="3">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> ارسال نظر
+                    </button>
+                </form>
+            </section>
+        </div>
+        
+        <section class="comments-section">
+            <h2 id="commentsTitle"><i class="fas fa-comments"></i> نظرات ثبت شده</h2>
+            <div id="commentsContainer">
+                <div class="no-comments" id="noCommentsText">
+                    هنوز نظری ثبت نشده است. اولین نفری باشید که نظر می‌دهد!
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p id="footerText1">برنامه اریترا (Erythra) - حفظ و ترویج میراث فرهنگی خلیج فارس</p>
+            <p id="footerText2">© ۱۴۰۳ - تمامی حقوق محفوظ است</p>
+        </footer>
+    </div>
+    
+    <script>
+        // سیستم دو زبانه
+        const translations = {
+            fa: {
+                pageSubtitle: "اسطوره خلیج فارس",
+                legendTitle: "افسانه اریترا",
+                legendText1: "اسطوره اریترا یکی از اسطوره‌های کهن مرتبط با خلیج فارس است که نام آن برگرفته از نام یک شاهزاده یا سردار پارسی به نام اریتراس بوده است. این اسطوره روایت می‌کند که اریتراس پس از حمله شیرها به گله مادیانش به جزیره‌ هرمز پناه برد و آنجا را آباد کرد و مسلط بر آب‌های اطراف شد، به گونه‌ای که این دریا به نام او «اریترا» خوانده شد.",
+                legendHighlight: "دریای اریترا کهن‌ترین نام برای پهنه آبی بین عمان و هندوستان است.",
+                legendText2: "در متون تاریخی آمده است که مقبره این شاهزاده یا فرمانروا در جزیره هرمز وجود دارد و این اسطوره یادآور شخصیتی از خطه پارس و یکی از فرمانروایان مهم منطقه بوده که خلیج فارس را تحت سلطه داشته است.",
+                legendText3: "نام قدیم خلیج فارس پیش از این در دوران مادها و ایران باستان به صورت دریای اریترا شناخته می‌شده است و این کهن‌ترین نام برای این پهنه آبی بین عمان و هندوستان است که در مستندات تاریخی تأیید شده است. اریترا به نوعی یادآور تاریخی از حضور و تسلط ایرانیان بر این منطقه و میراث کهن فرهنگی آن است که طی قرون در لایه‌های متعددی از تاریخ و اسطوره‌ها ثبت شده است.",
+                formTitle: "ثبت نظر درباره افسانه اریترا",
+                nameLabel: "نام شما:",
+                namePlaceholder: "نام خود را وارد کنید",
+                emailLabel: "ایمیل (اختیاری):",
+                emailPlaceholder: "example@domain.com",
+                commentLabel: "نظر خود را درباره افسانه اریترا بیان کنید:",
+                commentPlaceholder: "نظرات، تحلیل‌ها یا پیشنهادات خود را درباره افسانه اریترا بنویسید...",
+                familiarityLabel: "آیا پیش از این با افسانه اریترا آشنا بودید؟",
+                familiarityOptions: ["بله، کاملاً آشنا بودم", "تا حدودی شنیده بودم", "خیر، اولین بار است می‌شنوم"],
+                importanceLabel: "اهمیت این افسانه در شناخت تاریخ خلیج فارس از نظر شما:",
+                ratingTexts: ["کم", "متوسط", "زیاد", "خیلی زیاد", "بسیار حیاتی"],
+                submitBtn: "ارسال نظر",
+                commentsTitle: "نظرات ثبت شده",
+                noCommentsText: "هنوز نظری ثبت نشده است. اولین نفری باشید که نظر می‌دهد!",
+                footerText1: "برنامه اریترا (Erythra) - حفظ و ترویج میراث فرهنگی خلیج فارس",
+                footerText2: "© ۱۴۰۳ - تمامی حقوق محفوظ است",
+                langToggle: "English",
+                successMessage: "نظر شما با موفقیت ثبت شد! از مشارکت شما در شناخت افسانه اریترا سپاسگزاریم."
+            },
+            en: {
+                pageSubtitle: "The Legend of the Persian Gulf",
+                legendTitle: "The Erythra Legend",
+                legendText1: "The Erythra myth is one of the ancient myths related to the Persian Gulf, whose name is derived from a Persian prince or commander named Erythras. This myth narrates that Erythras, after an attack by lions on his herd of mares, took refuge on Hormuz Island, developed it, and gained control over the surrounding waters, to the extent that this sea came to be called 'Erythra' after him.",
+                legendHighlight: "The Erythra Sea is the oldest name for the body of water between Oman and India.",
+                legendText2: "Historical texts mention that the tomb of this prince or ruler exists on Hormuz Island, and this myth reminds us of a figure from the Pars region and one of the important rulers of the area who had control over the Persian Gulf.",
+                legendText3: "The ancient name of the Persian Gulf before this, during the Medes and ancient Iran, was known as the Erythra Sea, and this is the oldest name for this body of water between Oman and India, confirmed in historical documents. Erythra in a way reminds us of the historical presence and dominance of Iranians in this region and its ancient cultural heritage, which has been recorded in multiple layers of history and myths over the centuries.",
+                formTitle: "Share Your Thoughts About the Erythra Legend",
+                nameLabel: "Your Name:",
+                namePlaceholder: "Enter your name",
+                emailLabel: "Email (Optional):",
+                emailPlaceholder: "example@domain.com",
+                commentLabel: "Share your thoughts about the Erythra legend:",
+                commentPlaceholder: "Write your comments, analyses, or suggestions about the Erythra legend...",
+                familiarityLabel: "Were you familiar with the Erythra legend before?",
+                familiarityOptions: ["Yes, completely familiar", "Somewhat heard about it", "No, this is the first time I'm hearing about it"],
+                importanceLabel: "In your opinion, how important is this legend in understanding the history of the Persian Gulf?",
+                ratingTexts: ["Low", "Medium", "High", "Very High", "Critical"],
+                submitBtn: "Submit Comment",
+                commentsTitle: "Submitted Comments",
+                noCommentsText: "No comments have been submitted yet. Be the first to comment!",
+                footerText1: "Erythra App - Preserving and promoting the cultural heritage of the Persian Gulf",
+                footerText2: "© 2024 - All rights reserved",
+                langToggle: "فارسی",
+                successMessage: "Your comment has been successfully submitted! Thank you for your participation in understanding the Erythra legend."
+            }
+        };
+
+        let currentLang = 'fa';
+        const langToggle = document.getElementById('langToggle');
+        
+        // تابع تغییر زبان
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            
+            // به روزرسانی متون
+            document.getElementById('pageSubtitle').textContent = t.pageSubtitle;
+            document.getElementById('legendTitle').innerHTML = `<i class="fas fa-book-open"></i> ${t.legendTitle}`;
+            document.getElementById('legendText1').textContent = t.legendText1;
+            document.getElementById('legendHighlight').innerHTML = `<i class="fas fa-quote-right"></i> ${t.legendHighlight}`;
+            document.getElementById('legendText2').textContent = t.legendText2;
+            document.getElementById('legendText3').textContent = t.legendText3;
+            
+            document.getElementById('formTitle').innerHTML = `<i class="fas fa-comment-alt"></i> ${t.formTitle}`;
+            document.getElementById('nameLabel').textContent = t.nameLabel;
+            document.getElementById('name').placeholder = t.namePlaceholder;
+            document.getElementById('emailLabel').textContent = t.emailLabel;
+            document.getElementById('email').placeholder = t.emailPlaceholder;
+            document.getElementById('commentLabel').textContent = t.commentLabel;
+            document.getElementById('comment').placeholder = t.commentPlaceholder;
+            document.getElementById('familiarityLabel').textContent = t.familiarityLabel;
+            
+            // به روزرسانی گزینه‌های انتخاب
+            const familiaritySelect = document.getElementById('familiarity');
+            familiaritySelect.innerHTML = '';
+            t.familiarityOptions.forEach((option, index) => {
+                const opt = document.createElement('option');
+                opt.value = ['yes', 'somewhat', 'no'][index];
+                opt.textContent = option;
+                if (index === 2) opt.selected = true;
+                familiaritySelect.appendChild(opt);
+            });
+            
+            document.getElementById('importanceLabel').textContent = t.importanceLabel;
+            
+            // به روزرسانی متن رتبه‌بندی
+            t.ratingTexts.forEach((text, index) => {
+                document.getElementById(`ratingText${index + 1}`).textContent = text;
+            });
+            
+            document.getElementById('submitBtn').innerHTML = `<i class="fas fa-paper-plane"></i> ${t.submitBtn}`;
+            document.getElementById('commentsTitle').innerHTML = `<i class="fas fa-comments"></i> ${t.commentsTitle}`;
+            document.getElementById('noCommentsText').textContent = t.noCommentsText;
+            document.getElementById('footerText1').textContent = t.footerText1;
+            document.getElementById('footerText2').textContent = t.footerText2;
+            langToggle.innerHTML = `<i class="fas fa-language"></i> ${t.langToggle}`;
+            
+            // تغییر جهت صفحه
+            if (lang === 'en') {
+                document.body.classList.add('english');
+                document.body.setAttribute('dir', 'ltr');
+                document.querySelector('.container').style.textAlign = 'left';
+            } else {
+                document.body.classList.remove('english');
+                document.body.setAttribute('dir', 'rtl');
+                document.querySelector('.container').style.textAlign = 'right';
+            }
+            
+            // ذخیره زبان انتخابی
+            localStorage.setItem('erythraLanguage', lang);
+        }
+        
+        // رویداد تغییر زبان
+        langToggle.addEventListener('click', function() {
+            const newLang = currentLang === 'fa' ? 'en' : 'fa';
+            switchLanguage(newLang);
+        });
+        
+        // بارگذاری زبان ذخیره شده
+        const savedLang = localStorage.getItem('erythraLanguage') || 'fa';
+        switchLanguage(savedLang);
+        
+        // مدیریت سیستم رتبه‌بندی
+        const ratingItems = document.querySelectorAll('.rating-item');
+        const ratingValue = document.getElementById('ratingValue');
+        
+        ratingItems.forEach(item => {
+            item.addEventListener('click', () => {
+                ratingItems.forEach(r => r.querySelector('.rating-circle').classList.remove('selected'));
+                item.querySelector('.rating-circle').classList.add('selected');
+                ratingValue.value = item.getAttribute('data-value');
+            });
+        });
+        
+        // انتخاب مقدار پیش‌فرض
+        document.querySelector('.rating-item[data-value="3"] .rating-circle').classList.add('selected');
+        
+        // مدیریت فرم
+        const commentForm = document.getElementById('commentForm');
+        const commentsContainer = document.getElementById('commentsContainer');
+        
+        let comments = [];
+        
+        // بارگذاری نظرات از localStorage
+        if (localStorage.getItem('erythraComments')) {
+            comments = JSON.parse(localStorage.getItem('erythraComments'));
+            displayComments();
+        }
+        
+        // نمایش نظرات
+        function displayComments() {
+            if (comments.length === 0) {
+                const t = translations[currentLang];
+                commentsContainer.innerHTML = `<div class="no-comments">${t.noCommentsText}</div>`;
+                return;
+            }
+            
+            commentsContainer.innerHTML = '';
+            
+            // نمایش نظرات به ترتیب معکوس
+            comments.slice().reverse().forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                
+                const stars = '★'.repeat(comment.rating) + '☆'.repeat(5 - comment.rating);
+                const familiarityText = getFamiliarityText(comment.familiarity, currentLang);
+                
+                commentElement.innerHTML = `
+                    <div class="comment-header">
+                        <span class="comment-name">${comment.name}</span>
+                        <span class="comment-rating" title="${currentLang === 'fa' ? 'اهمیت' : 'Importance'}: ${comment.rating} ${currentLang === 'fa' ? 'از ۵' : 'out of 5'}">${stars}</span>
+                    </div>
+                    <div class="comment-text">${comment.comment}</div>
+                    <div class="comment-footer" style="margin-top: 10px; font-size: 0.85rem; color: #888;">
+                        <i class="far fa-clock"></i> ${comment.date} 
+                        <span style="${currentLang === 'fa' ? 'margin-right: 15px;' : 'margin-left: 15px;'}">| ${currentLang === 'fa' ? 'آشنایی قبلی' : 'Prior familiarity'}: ${familiarityText}</span>
+                    </div>
+                `;
+                
+                commentsContainer.appendChild(commentElement);
+            });
+        }
+        
+        // تبدیل مقدار آشنایی به متن
+        function getFamiliarityText(value, lang) {
+            if (lang === 'fa') {
+                switch(value) {
+                    case 'yes': return 'کاملاً آشنا';
+                    case 'somewhat': return 'تا حدودی';
+                    case 'no': return 'اولین بار';
+                    default: return value;
+                }
+            } else {
+                switch(value) {
+                    case 'yes': return 'Completely familiar';
+                    case 'somewhat': return 'Somewhat familiar';
+                    case 'no': return 'First time';
+                    default: return value;
+                }
+            }
+        }
+        
+        // مدیریت ارسال فرم
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // دریافت مقادیر فرم
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const comment = document.getElementById('comment').value;
+            const familiarity = document.getElementById('familiarity').value;
+            const rating = document.getElementById('ratingValue').value;
+            
+            // ایجاد تاریخ
+            const now = new Date();
+            let dateString;
+            
+            if (currentLang === 'fa') {
+                dateString = now.toLocaleDateString('fa-IR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } else {
+                dateString = now.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+            
+            // ایجاد نظر جدید
+            const newComment = {
+                name,
+                email: email || (currentLang === 'fa' ? 'ثبت نشده' : 'Not provided'),
+                comment,
+                familiarity,
+                rating: parseInt(rating),
+                date: dateString,
+                lang: currentLang
+            };
+            
+            // اضافه کردن نظر به آرایه
+            comments.push(newComment);
+            
+            // ذخیره در localStorage
+            localStorage.setItem('erythraComments', JSON.stringify(comments));
+            
+            // نمایش نظر جدید
+            displayComments();
+            
+            // نمایش پیام موفقیت
+            const t = translations[currentLang];
+            alert(t.successMessage);
+            
+            // بازنشانی فرم
+            commentForm.reset();
+            document.getElementById('familiarity').value = 'no';
+            
+            // بازنشانی رتبه‌بندی
+            ratingItems.forEach(r => r.querySelector('.rating-circle').classList.remove('selected'));
+            document.querySelector('.rating-item[data-value="3"] .rating-circle').classList.add('selected');
+            ratingValue.value = '3';
+        });
+        
+        // اضافه کردن یک نظر نمونه برای نمایش اولیه
+        if (comments.length === 0) {
+            const sampleComment = {
+                name: currentLang === 'fa' ? "پویا احمدی" : "Pouya Ahmadi",
+                email: currentLang === 'fa' ? "ثبت نشده" : "Not provided",
+                comment: currentLang === 'fa' 
+                    ? "افسانه اریترا نشان‌دهنده عمق تاریخی حضور ایرانیان در خلیج فارس است. بسیار جالب بود که با این افسانه آشنا شدم."
+                    : "The Erythra legend demonstrates the historical depth of Iranian presence in the Persian Gulf. It was very interesting to learn about this legend.",
+                familiarity: "no",
+                rating: 5,
+                date: currentLang === 'fa' ? "۲۵ فروردین ۱۴۰۳ - ۱۴:۳۰" : "April 14, 2024 - 14:30",
+                lang: currentLang
+            };
+            
+            comments = [sampleComment];
+            localStorage.setItem('erythraComments', JSON.stringify(comments));
+            displayComments();
+        }
+    </script>
+</body>
+</html>
